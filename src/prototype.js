@@ -33,17 +33,14 @@ console.log("Split Documents: ", documents)
 
 console.log("Initializing models and DB...");
 
-const embeddings = new AzureOpenAIEmbeddings({
-  apiKey: process.env.OPENAI_API_KEY,
-});
-
-
-console.log("Embedding documents...");
-
-const vectorStore = await FaissStore.fromDocuments({documents, embeddings });
-
-
+const embeddings = new AzureOpenAIEmbeddings();
 const model = new AzureChatOpenAI();
+
+
+const vectorStore = new AzureAISearchVectoreStore();
+
+
+
 
 
 // Run the chain -------------------------------------------------------------
